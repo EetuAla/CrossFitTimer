@@ -23,8 +23,7 @@ const database = getDatabase(app);
 export default function WorkoutScreen() {
   const [workout, setWorkout] = useState({
     title: "",
-    reps: "",
-    weight: "",
+    description: "",
   });
   const [workouts, setWorkouts] = useState([]);
 
@@ -47,13 +46,8 @@ export default function WorkoutScreen() {
       />
       <TextInput
         value={workout.reps}
-        onChangeText={(value) => setWorkout({ ...workout, reps: value })}
-        placeholder="Repetitions"
-      />
-      <TextInput
-        value={workout.weight}
-        onChangeText={(value) => setWorkout({ ...workout, weight: value })}
-        placeholder="Weight"
+        onChangeText={(value) => setWorkout({ ...workout, description: value })}
+        placeholder="Description"
       />
       <Button title="Add Workout" onPress={handleSave} />
     </View>
