@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     marginBottom: 5,
+    marginTop: 10,
   },
   separator: {
     height: 1,
