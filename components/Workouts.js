@@ -47,21 +47,24 @@ export default function WorkoutScreen() {
   return (
     <View style={styles.container}>
       <TextInput
+        style={styles.input}
         value={workout.title}
         onChangeText={(value) => setWorkout({ ...workout, title: value })}
         placeholder="Name"
       />
       <TextInput
-        value={workout.reps}
+        style={[styles.input, { height: 100 }]}
+        value={workout.description}
         onChangeText={(value) => setWorkout({ ...workout, description: value })}
         placeholder="Description"
+        multiline={true}
       />
       <Button title="Add Workout" onPress={handleSave} />
       <FlatList
         data={workouts}
         renderItem={({ item }) => (
           <View>
-            <Text>{item.title}</Text>
+            <Text style={styles.flatlistTitle}>{item.title}</Text>
             <Text>{item.description}</Text>
           </View>
         )}
@@ -75,5 +78,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "grey",
+    borderRadius: 5,
+    width: "80%",
+    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
+  flatlistTitle: {
+    fontWeight: "bold",
+    fontSize: 18,
+    marginBottom: 5,
   },
 });
