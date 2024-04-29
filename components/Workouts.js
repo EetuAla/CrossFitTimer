@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  Button,
+  FlatList,
+  Text,
+} from "react-native";
 import { useState, useEffect } from "react";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -50,6 +57,15 @@ export default function WorkoutScreen() {
         placeholder="Description"
       />
       <Button title="Add Workout" onPress={handleSave} />
+      <FlatList
+        data={workouts}
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.title}</Text>
+            <Text>{item.description}</Text>
+          </View>
+        )}
+      />
     </View>
   );
 }
