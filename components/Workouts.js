@@ -7,11 +7,9 @@ import {
   Text,
 } from "react-native";
 import { useState, useEffect } from "react";
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, onValue } from "firebase/database";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAQ_LHRsTguTe_Pjru4PwxDrVxbB5gjuqo",
   authDomain: "crossfittimer-935e5.firebaseapp.com",
@@ -23,7 +21,6 @@ const firebaseConfig = {
   appId: "1:725226850324:web:f95024b9e8b8481217bf01",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
@@ -43,6 +40,7 @@ export default function WorkoutScreen() {
 
   const handleSave = () => {
     push(ref(database, "/workouts"), workout);
+    setWorkout({ title: "", description: "" });
   };
   return (
     <View style={styles.container}>
@@ -63,11 +61,12 @@ export default function WorkoutScreen() {
       <FlatList
         data={workouts}
         renderItem={({ item }) => (
-          <View>
+          <View style={styles.workoutContainer}>
             <Text style={styles.flatlistTitle}>{item.title}</Text>
-            <Text>{item.description}</Text>
+            <Text style={styles.description}>{item.description}</Text>
           </View>
         )}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
     </View>
   );
@@ -91,5 +90,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     marginBottom: 5,
+  },
+  separator: {
+    height: 1,
+    backgroundColor: "#ccc",
+    marginVertical: 5,
+  },
+  workoutContainer: {
+    alignItems: "center",
+  },
+  description: {
+    marginRight: 150,
   },
 });
