@@ -11,10 +11,9 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, onValue } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAQ_LHRsTguTe_Pjru4PwxDrVxbB5gjuqo",
+  apiKey: process.env.EXPO_PUBLIC_DATABASE_API,
   authDomain: "crossfittimer-935e5.firebaseapp.com",
-  databaseURL:
-    "https://crossfittimer-935e5-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL: process.env.EXPO_PUBLIC_DATABASE_URL,
   projectId: "crossfittimer-935e5",
   storageBucket: "crossfittimer-935e5.appspot.com",
   messagingSenderId: "725226850324",
