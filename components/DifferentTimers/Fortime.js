@@ -180,13 +180,13 @@ const styles = StyleSheet.create({
   },
   picker: {
     flex: 1,
-    maxWidth: 100,
+    maxWidth: 150,
     color: "#000000",
     backgroundColor: "#fff",
   },
   pickerItem: {
     color: "#000000",
-    fontSize: 20,
+    fontSize: 17,
     marginLeft: 10,
     marginRight: 10,
   },
