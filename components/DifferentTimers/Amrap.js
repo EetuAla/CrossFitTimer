@@ -6,7 +6,6 @@ import {
   Text,
   StatusBar,
   TouchableOpacity,
-  Platform,
   Alert,
 } from "react-native";
 
@@ -55,6 +54,14 @@ export default class Amrap extends Component {
   }
 
   start = () => {
+    if (
+      this.state.selectedMinutes === "0" &&
+      this.state.selectedSeconds === "0"
+    ) {
+      Alert.alert("Do a longer workout! ;)");
+      return;
+    }
+
     this.setState((state) => ({
       remainingSeconds:
         parseInt(state.selectedMinutes, 10) * 60 +
@@ -167,22 +174,14 @@ const styles = StyleSheet.create({
   picker: {
     flex: 1,
     maxWidth: 100,
-    ...Platform.select({
-      android: {
-        color: "#000000",
-        backgroundColor: "rgba(92, 92, 92, 0.206)",
-      },
-    }),
+    color: "#000000",
+    backgroundColor: "#fff",
   },
   pickerItem: {
     color: "#000000",
     fontSize: 20,
-    ...Platform.select({
-      android: {
-        marginLeft: 10,
-        marginRight: 10,
-      },
-    }),
+    marginLeft: 10,
+    marginRight: 10,
   },
   pickerContainer: {
     flexDirection: "row",
