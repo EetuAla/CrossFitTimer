@@ -159,20 +159,20 @@ const styles = StyleSheet.create({
   },
   button: {
     borderWidth: 10,
-    borderColor: "#89AAFF",
+    borderColor: "#89aaff",
     alignItems: "center",
     justifyContent: "center",
     marginTop: 30,
   },
   buttonStop: {
-    borderColor: "#FF851B",
+    borderColor: "#ff0000",
   },
   buttonText: {
     fontSize: 45,
-    color: "#89AAFF",
+    color: "#89aaff",
   },
   buttonTextStop: {
-    color: "#FF851B",
+    color: "#ff851b",
   },
   timerText: {
     color: "#000000",
