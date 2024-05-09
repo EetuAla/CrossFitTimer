@@ -143,6 +143,8 @@ export default class Amrap extends Component {
     );
   }
 }
+
+// styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

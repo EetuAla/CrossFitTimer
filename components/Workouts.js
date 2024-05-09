@@ -70,6 +70,8 @@ export default function WorkoutScreen() {
     </View>
   );
 }
+
+// styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -150,6 +150,8 @@ export default class Fortime extends Component {
     );
   }
 }
+
+// styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,
