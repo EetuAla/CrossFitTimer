@@ -10,13 +10,13 @@ import {
 } from "react-native";
 
 const formatNumber = (number) => `0${number}`.slice(-2);
-
+// getitng the reamaining time
 const getRemaining = (time) => {
   const minutes = Math.floor(time / 60);
   const seconds = time - minutes * 60;
   return { minutes: formatNumber(minutes), seconds: formatNumber(seconds) };
 };
-
+// creating the arrays for pickers
 const createArray = (length) => {
   const arr = [];
   let i = 0;
@@ -31,6 +31,7 @@ const timerMinutes = createArray(61);
 const timerSeconds = createArray(60);
 
 export default class Fortime extends Component {
+  // state for the timer
   state = {
     remainingSeconds: 0,
     isRunning: false,
@@ -51,7 +52,7 @@ export default class Fortime extends Component {
       clearInterval(this.interval);
     }
   }
-
+  // Starting the timer
   start = () => {
     if (
       this.state.selectedMinutes === "0" &&
@@ -81,7 +82,7 @@ export default class Fortime extends Component {
       }, 1000);
     });
   };
-
+  // stopping the timer
   stop = () => {
     clearInterval(this.interval);
     this.interval = null;
@@ -90,7 +91,7 @@ export default class Fortime extends Component {
       isRunning: false,
     });
   };
-
+  // rendering the pickers
   renderPickers = () => (
     <View style={styles.pickerContainer}>
       <Picker
@@ -123,7 +124,7 @@ export default class Fortime extends Component {
       <Text style={styles.pickerItem}>seconds</Text>
     </View>
   );
-
+  // switch to what to render
   render() {
     const { minutes, seconds } = getRemaining(this.state.remainingSeconds);
     return (

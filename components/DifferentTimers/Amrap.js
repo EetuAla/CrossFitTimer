@@ -8,15 +8,16 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-
+// formating the numbers in the timer to have a leading zero
 const formatNumber = (number) => `0${number}`.slice(-2);
 
+// getting the remaining seconds
 const getRemaining = (time) => {
   const minutes = Math.floor(time / 60);
   const seconds = time - minutes * 60;
   return { minutes: formatNumber(minutes), seconds: formatNumber(seconds) };
 };
-
+// to make the arrays for the pickers
 const createArray = (length) => {
   const arr = [];
   let i = 0;
@@ -26,11 +27,12 @@ const createArray = (length) => {
   }
   return arr;
 };
-
+// values for the arrays
 const timerMinutes = createArray(61);
 const timerSeconds = createArray(60);
 
 export default class Amrap extends Component {
+  // state for the timer
   state = {
     remainingSeconds: 0,
     isRunning: false,
@@ -52,7 +54,7 @@ export default class Amrap extends Component {
       clearInterval(this.interval);
     }
   }
-
+  // starting the timer
   start = () => {
     if (
       this.state.selectedMinutes === "0" &&
@@ -74,12 +76,12 @@ export default class Amrap extends Component {
       }));
     }, 1000);
   };
-
+  // stopping the timer
   stop = () => {
     clearInterval(this.interval);
     this.interval = null;
     this.setState({
-      remainingSeconds: 5,
+      remainingSeconds: 0,
       isRunning: false,
     });
   };

@@ -9,7 +9,7 @@ import {
 import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, onValue } from "firebase/database";
-
+// database config
 const firebaseConfig = {
   apiKey: process.env.EXPO_PUBLIC_DATABASE_API,
   authDomain: "crossfittimer-935e5.firebaseapp.com",
@@ -24,19 +24,21 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 export default function WorkoutScreen() {
+  // states for the workouts to be added to database
   const [workout, setWorkout] = useState({
     title: "",
     description: "",
   });
   const [workouts, setWorkouts] = useState([]);
 
+  // fetching data from the database
   useEffect(() => {
     onValue(ref(database, "/workouts"), (snapshot) => {
       const data = snapshot.val();
       setWorkouts(Object.values(data));
     });
   }, []);
-
+  // handeling save to the database, and making the title and description empty
   const handleSave = () => {
     push(ref(database, "/workouts"), workout);
     setWorkout({ title: "", description: "" });
